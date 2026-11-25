@@ -1,0 +1,16 @@
+services:
+  floci:
+    image: floci/floci:2.3.0
+    container_name: floci-persistent
+    ports:
+      - "4567:4566"
+    environment:
+      FLOCI_STORAGE_MODE: persistent
+      FLOCI_STORAGE_PERSISTENT_PATH: /app/data
+      FLOCI_SERVICES_IAM_ENFORCEMENT_ENABLED: "true"
+    volumes:
+      - floci-persistent-data:/app/data
+
+volumes:
+  floci-persistent-data:
+    name: floci-persistent-data
